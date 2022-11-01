@@ -1,3 +1,7 @@
+import Administrare.LivrareMobila;
+import Administrare.StocareaDatelor;
+import Mobila.Dulap;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -18,49 +22,57 @@ public class Application
     private JButton btnClear;
     private JTextArea textArea;
     private JLabel lblFail;
+    private JComboBox comboBoxMobila;
+    private JLabel DimensiuniLabel;
+    private JLabel latimeLabel;
+    private JLabel lungimeLabel;
+    private JTextField textFieldLungime;
+    private JTextField textFieldLatime;
+    private JTextField textFieldInaltime;
     int nr=0;
     ArrayList<LivrareMobila> arr=new ArrayList<LivrareMobila>();
     public Application ()
     {
+        StocareaDatelor stocareaDatelor = StocareaDatelor.getInstance();
         btnAdd.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String nume = textNume.getText();
                 String prenume = textPrenume.getText();
-                String tip = textTip.getText();
                 String adresa = textAdresa.getText();
-                String s = textPret.getText();
-                int pret=0;
-                try
-                {
-                    pret = Integer.parseInt(s);
-                }
-                catch (Exception ex)
-                {
-                    lblFail.setText("Date gresite!");
-                }
-                finally
-                {
-                    if (pret==0)
-                        lblSuccess.setText("Incearca din nou!");
-                }
-                if (pret!=0)
-                {
                     nr++;
-                    try
-                    {
-                        arr.add(new LivrareMobila(nume,prenume,nr,tip,adresa,pret));
-                    }
-                    catch (Exception ex)
-                    {
-                        lblFail.setText("Date gresite!");
-                    }
-                    finally
-                    {
-                        lblSuccess.setText("Client adaugat cu succes!");
-                        lblFail.setText("");
-                    }
-                }
+
+                        if(comboBoxMobila.getSelectedItem().equals("Dulap")) {
+                            Dulap dulap = new Dulap();
+
+                            try {
+
+                                int lungime = Integer.parseInt(textFieldLungime.getText());
+                                int latime = Integer.parseInt(textFieldLatime.getText());
+                                int inaltime = Integer.parseInt(textFieldInaltime.getText());
+                                dulap.setLatime(latime);
+                                dulap.setLungime(lungime);
+                                dulap.setInaltime(inaltime);
+                                dulap.setPret(lungime * latime * inaltime / 3);
+
+                                arr.add(new LivrareMobila(nume, prenume, adresa, nr, dulap));
+
+                                stocareaDatelor.creareBazaTabel();
+                                stocareaDatelor.inBazaDeDate(arr, dulap, nume, prenume, adresa, nr);
+                                stocareaDatelor.display();
+
+
+                                //arr = stocareaDatelor.inArray(arr, dulap, nume, prenume, adresa, nr);
+                                //stocareaDatelor.inFisier(arr);
+
+                            }catch(Exception exception) {
+                                JOptionPane.showMessageDialog(null, "Introdu datele corect");
+                            }
+                        }
+
+
+
+                System.out.println(arr);
             }
         });
 
@@ -72,8 +84,8 @@ public class Application
                 for (LivrareMobila lm : arr)
                 {
                     sb.append(lm.toString());
-                }
 
+                }
                 textArea.setText(sb + "\n\n");
                 lblSuccess.setText("");
             }
@@ -87,7 +99,7 @@ public class Application
                     lblPT.setText("Nu exista date!");
                 for (LivrareMobila lm:arr)
                 {
-                    total+=lm.getPretMobila();
+                    total+=lm.getMobila().getPret();
                 }
                 lblPT.setText(String.valueOf(total));
                 lblSuccess.setText("");
@@ -99,9 +111,10 @@ public class Application
             public void actionPerformed(ActionEvent e) {
                 textNume.setText("");
                 textPrenume.setText("");
-                textTip.setText("");
                 textAdresa.setText("");
-                textPret.setText("");
+                textFieldInaltime.setText("");
+                textFieldLatime.setText("");
+                textFieldLungime.setText("");
                 lblSuccess.setText("");
                 lblPT.setText("");
                 lblFail.setText("");
@@ -114,7 +127,7 @@ public class Application
         JFrame frame = new JFrame("Proiect II");
         frame.setContentPane(new Application().panel);
         frame.pack();
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 }
