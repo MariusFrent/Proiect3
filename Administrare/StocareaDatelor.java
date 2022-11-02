@@ -1,6 +1,7 @@
 package Administrare;
 
 import Mobila.Dulap;
+import Mobila.Scaun;
 
 import javax.swing.*;
 import javax.swing.plaf.nimbus.State;
@@ -68,6 +69,20 @@ public class StocareaDatelor {
     }
 
     public void inBazaDeDate(ArrayList<LivrareMobila> list, Dulap dulap, String nume, String prenume,
+                             String adresa, int numar){
+        try{
+            Connection connection = DriverManager.getConnection("jdbc:h2:" + "./Database/my",
+                    "root", "password");
+            Statement statement = connection.createStatement();
+            String sql = "insert into REGISTRATION(first,last,adresa) values(" + nume + "," + prenume + "," + adresa +")";
+            int i = statement.executeUpdate(sql);
+            System.out.println(i + "record inserted");
+        }catch (Exception e){
+            System.err.println(e.getMessage());
+        }
+    }
+
+    public void inBazaDeDate(ArrayList<LivrareMobila> list, Scaun scaun, String nume, String prenume,
                              String adresa, int numar){
         try{
             Connection connection = DriverManager.getConnection("jdbc:h2:" + "./Database/my",

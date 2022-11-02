@@ -1,6 +1,7 @@
 import Administrare.LivrareMobila;
 import Administrare.StocareaDatelor;
 import Mobila.Dulap;
+import Mobila.Scaun;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -53,7 +54,7 @@ public class Application
                                 dulap.setLatime(latime);
                                 dulap.setLungime(lungime);
                                 dulap.setInaltime(inaltime);
-                                dulap.setPret(lungime * latime * inaltime / 3);
+                                dulap.setPret(lungime * latime * inaltime / 30);
 
                                 arr.add(new LivrareMobila(nume, prenume, adresa, nr, dulap));
 
@@ -69,6 +70,34 @@ public class Application
                                 JOptionPane.showMessageDialog(null, "Introdu datele corect");
                             }
                         }
+
+                if(comboBoxMobila.getSelectedItem().equals("Scaun")) {
+                    Scaun scaun = new Scaun();
+
+                    try {
+
+                        int lungime = Integer.parseInt(textFieldLungime.getText());
+                        int latime = Integer.parseInt(textFieldLatime.getText());
+                        int inaltime = Integer.parseInt(textFieldInaltime.getText());
+                        scaun.setLatime(latime);
+                        scaun.setLungime(lungime);
+                        scaun.setInaltime(inaltime);
+                        scaun.setPret(lungime * latime * inaltime / 30);
+
+                        arr.add(new LivrareMobila(nume, prenume, adresa, nr, scaun));
+
+                        stocareaDatelor.creareBazaTabel();
+                        stocareaDatelor.inBazaDeDate(arr, scaun, nume, prenume, adresa, nr);
+                        stocareaDatelor.display();
+
+
+                        //arr = stocareaDatelor.inArray(arr, dulap, nume, prenume, adresa, nr);
+                        //stocareaDatelor.inFisier(arr);
+
+                    }catch(Exception exception) {
+                        JOptionPane.showMessageDialog(null, "Introdu datele corect");
+                    }
+                }
 
 
 
