@@ -6,6 +6,7 @@ import Mobila.*;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.util.ArrayList;
 public class Application
 {
@@ -56,7 +57,7 @@ public class Application
                                 dulap.setLatime(latime);
                                 dulap.setLungime(lungime);
                                 dulap.setInaltime(inaltime);
-                                dulap.setPret((lungime * latime * inaltime) / 3);
+                                dulap.setPret((lungime * latime * inaltime) / 3 * 100);
 
                                 arr.add(new LivrareMobila(nume, prenume, adresa, nr, dulap));
 
@@ -71,6 +72,9 @@ public class Application
                             }catch(Exception exception) {
                                 JOptionPane.showMessageDialog(null, "Introdu datele corect");
                             }
+                            finally {
+                                JOptionPane.showMessageDialog(null,"Client adaugat cu succes!");
+                            }
                         }
 
                 if(comboBoxMobila.getSelectedItem().equals("Birou")) {
@@ -84,7 +88,7 @@ public class Application
                         birou.setLatime(latime);
                         birou.setLungime(lungime);
                         birou.setInaltime(inaltime);
-                        birou.setPret((lungime * latime * inaltime) / 3);
+                        birou.setPret((lungime * latime * inaltime) / 3 * 100);
 
                         arr.add(new LivrareMobila(nume, prenume, adresa, nr, birou));
 
@@ -99,6 +103,9 @@ public class Application
                     }catch(Exception exception) {
                         JOptionPane.showMessageDialog(null, "Introdu datele corect");
                     }
+                    finally {
+                        JOptionPane.showMessageDialog(null,"Client adaugat cu succes!");
+                    }
                 }
 
                 if(comboBoxMobila.getSelectedItem().equals("Pat")) {
@@ -112,7 +119,7 @@ public class Application
                         pat.setLatime(latime);
                         pat.setLungime(lungime);
                         pat.setInaltime(inaltime);
-                        pat.setPret((lungime * latime * inaltime) / 3);
+                        pat.setPret((lungime * latime * inaltime) / 3 * 100);
 
                         arr.add(new LivrareMobila(nume, prenume, adresa, nr, pat));
 
@@ -126,6 +133,9 @@ public class Application
 
                     }catch(Exception exception) {
                         JOptionPane.showMessageDialog(null, "Introdu datele corect");
+                    }
+                    finally {
+                        JOptionPane.showMessageDialog(null,"Client adaugat cu succes!");
                     }
                 }
 
@@ -155,10 +165,11 @@ public class Application
                     }catch(Exception exception) {
                         JOptionPane.showMessageDialog(null, "Introdu datele corect");
                     }
-                    /*finally
-                    {
-                        log.WriteToFile();
-                    }*/
+                    finally {
+                        JOptionPane.showMessageDialog(null,"Client adaugat cu succes!");
+                    }
+                    
+
                 }
                 //System.out.println(arr);
             }

@@ -22,12 +22,7 @@ public class Logging
         return instance;
     }
 
-    /*public void setLog (String msg)
-    {
-        System.out.println(msg);
-    }*/
-
-    public void WriteToFile(){
+    public void WriteToFile() throws IOException{
 
         try {
 
