@@ -72,9 +72,9 @@ public class Application
                             }catch(Exception exception) {
                                 JOptionPane.showMessageDialog(null, "Introdu datele corect");
                             }
-                            finally {
-                                JOptionPane.showMessageDialog(null,"Client adaugat cu succes!");
-                            }
+
+                                //JOptionPane.showMessageDialog(null,"Client adaugat cu succes!");
+
                         }
 
                 if(comboBoxMobila.getSelectedItem().equals("Birou")) {
@@ -103,9 +103,9 @@ public class Application
                     }catch(Exception exception) {
                         JOptionPane.showMessageDialog(null, "Introdu datele corect");
                     }
-                    finally {
-                        JOptionPane.showMessageDialog(null,"Client adaugat cu succes!");
-                    }
+
+                        //JOptionPane.showMessageDialog(null,"Client adaugat cu succes!");
+
                 }
 
                 if(comboBoxMobila.getSelectedItem().equals("Pat")) {
@@ -134,9 +134,9 @@ public class Application
                     }catch(Exception exception) {
                         JOptionPane.showMessageDialog(null, "Introdu datele corect");
                     }
-                    finally {
-                        JOptionPane.showMessageDialog(null,"Client adaugat cu succes!");
-                    }
+
+                        //JOptionPane.showMessageDialog(null,"Client adaugat cu succes!");
+
                 }
 
                 if(comboBoxMobila.getSelectedItem().equals("Masa")) {
@@ -165,9 +165,9 @@ public class Application
                     }catch(Exception exception) {
                         JOptionPane.showMessageDialog(null, "Introdu datele corect");
                     }
-                    finally {
-                        JOptionPane.showMessageDialog(null,"Client adaugat cu succes!");
-                    }
+
+                        //JOptionPane.showMessageDialog(null,"Client adaugat cu succes!");
+
                     
 
                 }
