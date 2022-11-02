@@ -1,7 +1,8 @@
 import Administrare.LivrareMobila;
+import Administrare.Logging;
 import Administrare.StocareaDatelor;
 import Mobila.Dulap;
-
+import Mobila.*;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -31,6 +32,8 @@ public class Application
     private JTextField textFieldInaltime;
     int nr=0;
     ArrayList<LivrareMobila> arr=new ArrayList<LivrareMobila>();
+    //Logging log = Logging.getInstance();
+
     public Application ()
     {
         StocareaDatelor stocareaDatelor = StocareaDatelor.getInstance();
@@ -40,7 +43,7 @@ public class Application
                 String nume = textNume.getText();
                 String prenume = textPrenume.getText();
                 String adresa = textAdresa.getText();
-                    nr++;
+                nr++;
 
                         if(comboBoxMobila.getSelectedItem().equals("Dulap")) {
                             Dulap dulap = new Dulap();
@@ -53,7 +56,7 @@ public class Application
                                 dulap.setLatime(latime);
                                 dulap.setLungime(lungime);
                                 dulap.setInaltime(inaltime);
-                                dulap.setPret(lungime * latime * inaltime / 3);
+                                dulap.setPret((lungime * latime * inaltime) / 3);
 
                                 arr.add(new LivrareMobila(nume, prenume, adresa, nr, dulap));
 
@@ -70,9 +73,94 @@ public class Application
                             }
                         }
 
+                if(comboBoxMobila.getSelectedItem().equals("Birou")) {
+                    Birou birou = new Birou();
+
+                    try {
+
+                        int lungime = Integer.parseInt(textFieldLungime.getText());
+                        int latime = Integer.parseInt(textFieldLatime.getText());
+                        int inaltime = Integer.parseInt(textFieldInaltime.getText());
+                        birou.setLatime(latime);
+                        birou.setLungime(lungime);
+                        birou.setInaltime(inaltime);
+                        birou.setPret((lungime * latime * inaltime) / 3);
+
+                        arr.add(new LivrareMobila(nume, prenume, adresa, nr, birou));
+
+                        stocareaDatelor.creareBazaTabel();
+                        stocareaDatelor.inBazaDeDate(arr, birou, nume, prenume, adresa, nr);
+                        stocareaDatelor.display();
 
 
-                System.out.println(arr);
+                        //arr = stocareaDatelor.inArray(arr, dulap, nume, prenume, adresa, nr);
+                        //stocareaDatelor.inFisier(arr);
+
+                    }catch(Exception exception) {
+                        JOptionPane.showMessageDialog(null, "Introdu datele corect");
+                    }
+                }
+
+                if(comboBoxMobila.getSelectedItem().equals("Pat")) {
+                    Pat pat = new Pat();
+
+                    try {
+
+                        int lungime = Integer.parseInt(textFieldLungime.getText());
+                        int latime = Integer.parseInt(textFieldLatime.getText());
+                        int inaltime = Integer.parseInt(textFieldInaltime.getText());
+                        pat.setLatime(latime);
+                        pat.setLungime(lungime);
+                        pat.setInaltime(inaltime);
+                        pat.setPret((lungime * latime * inaltime) / 3);
+
+                        arr.add(new LivrareMobila(nume, prenume, adresa, nr, pat));
+
+                        stocareaDatelor.creareBazaTabel();
+                        stocareaDatelor.inBazaDeDate(arr, pat, nume, prenume, adresa, nr);
+                        stocareaDatelor.display();
+
+
+                        //arr = stocareaDatelor.inArray(arr, dulap, nume, prenume, adresa, nr);
+                        //stocareaDatelor.inFisier(arr);
+
+                    }catch(Exception exception) {
+                        JOptionPane.showMessageDialog(null, "Introdu datele corect");
+                    }
+                }
+
+                if(comboBoxMobila.getSelectedItem().equals("Masa")) {
+                    Masa masa = new Masa();
+
+                    try {
+
+                        int lungime = Integer.parseInt(textFieldLungime.getText());
+                        int latime = Integer.parseInt(textFieldLatime.getText());
+                        int inaltime = Integer.parseInt(textFieldInaltime.getText());
+                        masa.setLatime(latime);
+                        masa.setLungime(lungime);
+                        masa.setInaltime(inaltime);
+                        masa.setPret((lungime * latime * inaltime) / 3 * 100);
+
+                        arr.add(new LivrareMobila(nume, prenume, adresa, nr, masa));
+
+                        stocareaDatelor.creareBazaTabel();
+                        stocareaDatelor.inBazaDeDate(arr, masa, nume, prenume, adresa, nr);
+                        stocareaDatelor.display();
+
+
+                        //arr = stocareaDatelor.inArray(arr, dulap, nume, prenume, adresa, nr);
+                        //stocareaDatelor.inFisier(arr);
+
+                    }catch(Exception exception) {
+                        JOptionPane.showMessageDialog(null, "Introdu datele corect");
+                    }
+                    /*finally
+                    {
+                        log.WriteToFile();
+                    }*/
+                }
+                //System.out.println(arr);
             }
         });
 

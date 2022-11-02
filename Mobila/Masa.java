@@ -1,21 +1,18 @@
 package Mobila;
 
-public class Dulap implements Mobila{
+public class Masa implements Mobila
+{
+    int pret,lungime,latime,inaltime;
 
-    int pret;
-    int lungime;
-    int latime;
-    int inaltime;
+    public Masa () {}
 
-    public Dulap(){}
-
-    public Dulap(int pret, int lungime, int latime, int inaltime) {
+    public Masa (int pret, int lungime, int latime, int inaltime)
+    {
         this.pret = pret;
         this.lungime = lungime;
         this.latime = latime;
         this.inaltime = inaltime;
     }
-
     /*@Override
     public int arie(int lungime, int latime) {
         return lungime * latime;
@@ -56,7 +53,7 @@ public class Dulap implements Mobila{
 
     @Override
     public String toString() {
-        return "Dulap{" +
+        return "Masa{" +
                 "pret=" + pret +
                 ", lungime=" + lungime +
                 ", latime=" + latime +

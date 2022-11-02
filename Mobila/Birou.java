@@ -1,15 +1,12 @@
 package Mobila;
 
-public class Dulap implements Mobila{
+public class Birou implements Mobila
+{
+    int pret,lungime,latime,inaltime;
+    public Birou () {}
 
-    int pret;
-    int lungime;
-    int latime;
-    int inaltime;
-
-    public Dulap(){}
-
-    public Dulap(int pret, int lungime, int latime, int inaltime) {
+    public Birou (int pret, int lungime, int latime, int inaltime)
+    {
         this.pret = pret;
         this.lungime = lungime;
         this.latime = latime;
@@ -56,7 +53,7 @@ public class Dulap implements Mobila{
 
     @Override
     public String toString() {
-        return "Dulap{" +
+        return "Birou{" +
                 "pret=" + pret +
                 ", lungime=" + lungime +
                 ", latime=" + latime +

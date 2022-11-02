@@ -1,7 +1,7 @@
 package Administrare;
 
 import Mobila.Dulap;
-
+import Mobila.*;
 import javax.swing.*;
 import javax.swing.plaf.nimbus.State;
 import java.io.FileWriter;
@@ -14,7 +14,7 @@ import java.util.ArrayList;
 
 public class StocareaDatelor {
     private static volatile StocareaDatelor stocareaDatelor;
-
+    Mobila mobila;
     private StocareaDatelor(){}
 
     public static StocareaDatelor getInstance(){
@@ -49,6 +49,24 @@ public class StocareaDatelor {
         return list;
     }
 
+    public ArrayList<LivrareMobila> inArray(ArrayList<LivrareMobila> list, Birou birou, String nume, String prenume,
+                                            String adresa, int numar){
+        list.add(new LivrareMobila(nume, prenume, adresa, numar, birou));
+        return list;
+    }
+
+    public ArrayList<LivrareMobila> inArray(ArrayList<LivrareMobila> list, Pat pat, String nume, String prenume,
+                                            String adresa, int numar){
+        list.add(new LivrareMobila(nume, prenume, adresa, numar, pat));
+        return list;
+    }
+
+    public ArrayList<LivrareMobila> inArray(ArrayList<LivrareMobila> list, Masa masa, String nume, String prenume,
+                                            String adresa, int numar){
+        list.add(new LivrareMobila(nume, prenume, adresa, numar, masa));
+        return list;
+    }
+
     public void creareBazaTabel(){
         try{
             Connection connection = DriverManager.getConnection("jdbc:h2:" + "./Database/my",
@@ -67,7 +85,7 @@ public class StocareaDatelor {
         }
     }
 
-    public void inBazaDeDate(ArrayList<LivrareMobila> list, Dulap dulap, String nume, String prenume,
+    public void inBazaDeDate(ArrayList<LivrareMobila> list, Mobila mobila, String nume, String prenume,
                              String adresa, int numar){
         try{
             Connection connection = DriverManager.getConnection("jdbc:h2:" + "./Database/my",

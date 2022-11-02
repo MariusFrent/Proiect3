@@ -132,9 +132,8 @@
         <properties>
           <model>
             <item value="Dulap"/>
-            <item value="Scaun"/>
+            <item value="Birou"/>
             <item value="Masa"/>
-            <item value="Mobila De bucatarie"/>
             <item value="Pat"/>
           </model>
         </properties>
