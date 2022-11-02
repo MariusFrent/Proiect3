@@ -60,6 +60,10 @@ public class Application
                         lblSuccess.setText("Client adaugat cu succes!");
                         lblFail.setText("");
                     }
+<<<<<<< Updated upstream
+=======
+                    
+>>>>>>> Stashed changes
                 }
             }
         });
