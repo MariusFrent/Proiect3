@@ -151,7 +151,7 @@
           <grid row="4" column="0" row-span="2" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <text value="Seteaza dimensiunile mobilei"/>
+          <text value="Dimensiuni:"/>
         </properties>
       </component>
       <component id="a668" class="javax.swing.JLabel" binding="lungimeLabel">
@@ -177,7 +177,7 @@
           <grid row="6" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <text value="Inaltime"/>
+          <text value="Inaltime:"/>
         </properties>
       </component>
       <component id="704a2" class="javax.swing.JTextField" binding="textFieldLungime">

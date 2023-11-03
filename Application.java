@@ -33,7 +33,6 @@ public class Application
     private JTextField textFieldInaltime;
     int nr=0;
     ArrayList<LivrareMobila> arr=new ArrayList<LivrareMobila>();
-    //Logging log = Logging.getInstance();
 
     public Application ()
     {
@@ -44,40 +43,39 @@ public class Application
                 String nume = textNume.getText();
                 String prenume = textPrenume.getText();
                 String adresa = textAdresa.getText();
-                nr++;
 
-                        if(comboBoxMobila.getSelectedItem().equals("Dulap")) {
-                            Dulap dulap = new Dulap();
+                if(comboBoxMobila.getSelectedItem() == "Dulap") {
+                    Dulap dulap = new Dulap();
 
-                            try {
+                    try {
 
-                                int lungime = Integer.parseInt(textFieldLungime.getText());
-                                int latime = Integer.parseInt(textFieldLatime.getText());
-                                int inaltime = Integer.parseInt(textFieldInaltime.getText());
-                                dulap.setLatime(latime);
-                                dulap.setLungime(lungime);
-                                dulap.setInaltime(inaltime);
-                                dulap.setPret((lungime * latime * inaltime) / 3 * 100);
+                        int lungime = Integer.parseInt(textFieldLungime.getText());
+                        int latime = Integer.parseInt(textFieldLatime.getText());
+                        int inaltime = Integer.parseInt(textFieldInaltime.getText());
+                        dulap.setLatime(latime);
+                        dulap.setLungime(lungime);
+                        dulap.setInaltime(inaltime);
+                        dulap.setPret((lungime * latime * inaltime) / 3 * 100);
+                        nr++;
 
-                                arr.add(new LivrareMobila(nume, prenume, adresa, nr, dulap));
+                        arr.add(new LivrareMobila(nume, prenume, adresa, nr, dulap));
 
-                                stocareaDatelor.creareBazaTabel();
-                                stocareaDatelor.inBazaDeDate(arr, dulap, nume, prenume, adresa, nr);
-                                stocareaDatelor.display();
+//                        stocareaDatelor.creareBazaTabel();
+//                        stocareaDatelor.inBazaDeDate(arr, dulap, nume, prenume, adresa, nr);
+//                        stocareaDatelor.display();
 
+                        stocareaDatelor.inFisier(arr);
 
-                                //arr = stocareaDatelor.inArray(arr, dulap, nume, prenume, adresa, nr);
-                                //stocareaDatelor.inFisier(arr);
+                    }catch(Exception exception) {
+                        JOptionPane.showMessageDialog(null, "Date gresite!");
+                        return;
+                    }
 
-                            }catch(Exception exception) {
-                                JOptionPane.showMessageDialog(null, "Introdu datele corect");
-                            }
+                    JOptionPane.showMessageDialog(null,"Client adaugat cu succes!");
 
-                                //JOptionPane.showMessageDialog(null,"Client adaugat cu succes!");
+                }
 
-                        }
-
-                if(comboBoxMobila.getSelectedItem().equals("Birou")) {
+                if(comboBoxMobila.getSelectedItem() == "Birou") {
                     Birou birou = new Birou();
 
                     try {
@@ -89,26 +87,25 @@ public class Application
                         birou.setLungime(lungime);
                         birou.setInaltime(inaltime);
                         birou.setPret((lungime * latime * inaltime) / 3 * 100);
-
+                        nr++;
                         arr.add(new LivrareMobila(nume, prenume, adresa, nr, birou));
 
-                        stocareaDatelor.creareBazaTabel();
-                        stocareaDatelor.inBazaDeDate(arr, birou, nume, prenume, adresa, nr);
-                        stocareaDatelor.display();
+//                        stocareaDatelor.creareBazaTabel();
+//                        stocareaDatelor.inBazaDeDate(arr, birou, nume, prenume, adresa, nr);
+//                        stocareaDatelor.display();
 
-
-                        //arr = stocareaDatelor.inArray(arr, dulap, nume, prenume, adresa, nr);
-                        //stocareaDatelor.inFisier(arr);
+                        stocareaDatelor.inFisier(arr);
 
                     }catch(Exception exception) {
-                        JOptionPane.showMessageDialog(null, "Introdu datele corect");
+                        JOptionPane.showMessageDialog(null, "Date gresite!");
+                        return;
                     }
 
-                        //JOptionPane.showMessageDialog(null,"Client adaugat cu succes!");
+                    JOptionPane.showMessageDialog(null,"Client adaugat cu succes!");
 
                 }
 
-                if(comboBoxMobila.getSelectedItem().equals("Pat")) {
+                if(comboBoxMobila.getSelectedItem() == "Pat") {
                     Pat pat = new Pat();
 
                     try {
@@ -120,26 +117,25 @@ public class Application
                         pat.setLungime(lungime);
                         pat.setInaltime(inaltime);
                         pat.setPret((lungime * latime * inaltime) / 3 * 100);
-
+                        nr++;
                         arr.add(new LivrareMobila(nume, prenume, adresa, nr, pat));
 
-                        stocareaDatelor.creareBazaTabel();
-                        stocareaDatelor.inBazaDeDate(arr, pat, nume, prenume, adresa, nr);
-                        stocareaDatelor.display();
+//                        stocareaDatelor.creareBazaTabel();
+//                        stocareaDatelor.inBazaDeDate(arr, pat, nume, prenume, adresa, nr);
+//                        stocareaDatelor.display();
 
-
-                        //arr = stocareaDatelor.inArray(arr, dulap, nume, prenume, adresa, nr);
-                        //stocareaDatelor.inFisier(arr);
+                        stocareaDatelor.inFisier(arr);
 
                     }catch(Exception exception) {
-                        JOptionPane.showMessageDialog(null, "Introdu datele corect");
+                        JOptionPane.showMessageDialog(null, "Date gresite!");
+                        return;
                     }
 
-                        //JOptionPane.showMessageDialog(null,"Client adaugat cu succes!");
+                    JOptionPane.showMessageDialog(null,"Client adaugat cu succes!");
 
                 }
 
-                if(comboBoxMobila.getSelectedItem().equals("Masa")) {
+                if(comboBoxMobila.getSelectedItem() == "Masa") {
                     Masa masa = new Masa();
 
                     try {
@@ -151,27 +147,24 @@ public class Application
                         masa.setLungime(lungime);
                         masa.setInaltime(inaltime);
                         masa.setPret((lungime * latime * inaltime) / 3 * 100);
-
+                        nr++;
                         arr.add(new LivrareMobila(nume, prenume, adresa, nr, masa));
 
-                        stocareaDatelor.creareBazaTabel();
-                        stocareaDatelor.inBazaDeDate(arr, masa, nume, prenume, adresa, nr);
-                        stocareaDatelor.display();
+//                        stocareaDatelor.creareBazaTabel();
+//                        stocareaDatelor.inBazaDeDate(arr, masa, nume, prenume, adresa, nr);
+//                        stocareaDatelor.display();
 
 
-                        //arr = stocareaDatelor.inArray(arr, dulap, nume, prenume, adresa, nr);
-                        //stocareaDatelor.inFisier(arr);
+                        stocareaDatelor.inFisier(arr);
 
                     }catch(Exception exception) {
-                        JOptionPane.showMessageDialog(null, "Introdu datele corect");
+                        JOptionPane.showMessageDialog(null, "Date gresite!");
+                        return;
                     }
 
-                        //JOptionPane.showMessageDialog(null,"Client adaugat cu succes!");
-
-                    
+                    JOptionPane.showMessageDialog(null,"Client adaugat cu succes!");
 
                 }
-                //System.out.println(arr);
             }
         });
 
@@ -179,12 +172,11 @@ public class Application
             @Override
             public void actionPerformed(ActionEvent e) {
                 StringBuffer sb = new StringBuffer();
-                textArea.setText("Lista e goala!");
-                for (LivrareMobila lm : arr)
-                {
-                    sb.append(lm.toString());
 
+                for (LivrareMobila lm : arr) {
+                    sb.append(lm.toString());
                 }
+
                 textArea.setText(sb + "\n\n");
                 lblSuccess.setText("");
             }
@@ -194,12 +186,11 @@ public class Application
             @Override
             public void actionPerformed(ActionEvent e) {
                 int total=0;
-                if (total==0)
-                    lblPT.setText("Nu exista date!");
-                for (LivrareMobila lm:arr)
-                {
+
+                for (LivrareMobila lm:arr) {
                     total+=lm.getMobila().getPret();
                 }
+
                 lblPT.setText(String.valueOf(total));
                 lblSuccess.setText("");
             }
@@ -223,7 +214,7 @@ public class Application
 
     public static void main(String[] args)
     {
-        JFrame frame = new JFrame("Proiect II");
+        JFrame frame = new JFrame("Proiect III");
         frame.setContentPane(new Application().panel);
         frame.pack();
         frame.setVisible(true);

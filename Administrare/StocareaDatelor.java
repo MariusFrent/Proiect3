@@ -3,7 +3,6 @@ package Administrare;
 import Mobila.Dulap;
 import Mobila.*;
 import javax.swing.*;
-import javax.swing.plaf.nimbus.State;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.sql.Connection;
@@ -13,25 +12,21 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 public class StocareaDatelor {
-    private static volatile StocareaDatelor stocareaDatelor;
+    //private static volatile StocareaDatelor stocareaDatelor;
+    private static StocareaDatelor instance;
     Mobila mobila;
     private StocareaDatelor(){}
 
     public static StocareaDatelor getInstance(){
-        StocareaDatelor result = stocareaDatelor;
-        if(result == null){
-            synchronized (StocareaDatelor.class){
-                result = stocareaDatelor;
-                if(result == null)
-                    stocareaDatelor = result = new StocareaDatelor();
-            }
+        if (null == instance) {
+            instance = new StocareaDatelor();
         }
-        return result;
+        return instance;
     }
 
     public void inFisier(ArrayList<LivrareMobila> list){
         try {
-            FileWriter myWriter = new FileWriter("filename.txt");
+            FileWriter myWriter = new FileWriter("text.txt");
             for(LivrareMobila livrareMobila : list) {
                 myWriter.write(livrareMobila.toString());
             }
@@ -43,31 +38,39 @@ public class StocareaDatelor {
         }
     }
 
-    public ArrayList<LivrareMobila> inArray(ArrayList<LivrareMobila> list, Dulap dulap, String nume, String prenume,
-                                            String adresa, int numar){
-        list.add(new LivrareMobila(nume, prenume, adresa, numar, dulap));
-        return list;
-    }
-
-    public ArrayList<LivrareMobila> inArray(ArrayList<LivrareMobila> list, Birou birou, String nume, String prenume,
-                                            String adresa, int numar){
-        list.add(new LivrareMobila(nume, prenume, adresa, numar, birou));
-        return list;
-    }
-
-    public ArrayList<LivrareMobila> inArray(ArrayList<LivrareMobila> list, Pat pat, String nume, String prenume,
-                                            String adresa, int numar){
-        list.add(new LivrareMobila(nume, prenume, adresa, numar, pat));
-        return list;
-    }
-
-    public ArrayList<LivrareMobila> inArray(ArrayList<LivrareMobila> list, Masa masa, String nume, String prenume,
-                                            String adresa, int numar){
-        list.add(new LivrareMobila(nume, prenume, adresa, numar, masa));
-        return list;
-    }
-
-    public void creareBazaTabel(){
+//    public ArrayList<LivrareMobila> inArray(ArrayList<LivrareMobila> list, Dulap dulap, String nume, String prenume,
+//                                            String adresa, int numar){
+//        list.add(new LivrareMobila(nume, prenume, adresa, numar, dulap));
+//        return list;
+//    }
+//
+//    public ArrayList<LivrareMobila> inArray(ArrayList<LivrareMobila> list, Birou birou, String nume, String prenume,
+//                                            String adresa, int numar){
+//        list.add(new LivrareMobila(nume, prenume, adresa, numar, birou));
+//        return list;
+//    }
+//
+//    public ArrayList<LivrareMobila> inArray(ArrayList<LivrareMobila> list, Pat pat, String nume, String prenume,
+//                                            String adresa, int numar){
+//        list.add(new LivrareMobila(nume, prenume, adresa, numar, pat));
+//        return list;
+//    }
+//
+//    public ArrayList<LivrareMobila> inArray(ArrayList<LivrareMobila> list, Masa masa, String nume, String prenume,
+//                                            String adresa, int numar){
+//        list.add(new LivrareMobila(nume, prenume, adresa, numar, masa));
+//        return list;
+//    }
+    //        StocareaDatelor result = stocareaDatelor;
+//        if(result == null){
+//            synchronized (StocareaDatelor.class){
+//                result = stocareaDatelor;
+//                if(result == null)
+//                    stocareaDatelor = result = new StocareaDatelor();
+//            }
+//        }
+//        return result;
+    /*public void creareBazaTabel(){
         try{
             Connection connection = DriverManager.getConnection("jdbc:h2:" + "./Database/my",
                     "root", "password");
@@ -115,5 +118,5 @@ public class StocareaDatelor {
             System.err.println(e.getMessage());
         }
     }
-
+*/
 }

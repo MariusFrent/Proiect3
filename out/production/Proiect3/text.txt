@@ -1,0 +1,12 @@
+Datele clientului 1
+Nume :
+Prenume: 
+Adresa: 
+Mobila cumparata: Dulap{pret=800, lungime=2, latime=3, inaltime=4}
+
+Datele clientului 2
+Nume :
+Prenume: 
+Adresa: 
+Mobila cumparata: Masa{pret=7200, lungime=6, latime=6, inaltime=6}
+

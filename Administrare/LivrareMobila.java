@@ -59,12 +59,11 @@ public class LivrareMobila
 
     @Override
     public String toString() {
-        return "Client " + nrClient + "\n" +
-                "numeDestinatar= " + numeDestinatar + '\'' +
-                ", prenumeDestinatar= " + prenumeDestinatar + '\'' +
-                ", adresa= " + adresa + '\'' +
-                ", nrClient= " + nrClient +
-                ", mobila= " + mobila +
-                "\n";
+        return "Datele clientului " + nrClient +
+                "\nNume :" + numeDestinatar +
+                "\nPrenume: " + prenumeDestinatar +
+                "\nAdresa: " + adresa +
+                "\nMobila cumparata: " + mobila +"\n\n";
+
     }
 }
